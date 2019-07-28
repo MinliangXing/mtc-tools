@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
-@Configuration
+//@Configuration
 @ConditionalOnClass(ElasticJob.class)
 @ConditionalOnBean(annotation = ElasticJobConfig.class)
 @EnableConfigurationProperties(ZookeeperRegistryProperties.class)
