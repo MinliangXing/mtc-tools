@@ -4,7 +4,9 @@ package com.mtc.tools.schedule.dangdang.starter.autoconfigure;
 import com.mtc.tools.schedule.dangdang.core.reg.zookeeper.ZookeeperConfiguration;
 import com.mtc.tools.schedule.dangdang.core.reg.zookeeper.ZookeeperRegistryCenter;
 import com.mtc.tools.schedule.dangdang.starter.ZookeeperRegistryProperties;
+import com.mtc.tools.schedule.dangdang.starter.annotation.EnableElasticJob;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -14,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(ZookeeperRegistryCenter.class)
 @EnableConfigurationProperties(ZookeeperRegistryProperties.class)
+@ConditionalOnBean(annotation = EnableElasticJob.class)
 public class RegistryCenterConfiguration {
 
     private final ZookeeperRegistryProperties regCenterProperties;
