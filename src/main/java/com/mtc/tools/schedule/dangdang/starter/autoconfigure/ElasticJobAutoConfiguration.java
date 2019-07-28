@@ -39,7 +39,7 @@ import java.util.Map;
 import java.util.Objects;
 
 
-@ConditionalOnExpression("'${elaticjob.zookeeper.server-lists}'.length() > 0")
+@ConditionalOnExpression("'${elasticJob.zookeeper.server-lists}'.length() > 0")
 @Import({RegistryCenterConfiguration.class})
 public class ElasticJobAutoConfiguration {
 
