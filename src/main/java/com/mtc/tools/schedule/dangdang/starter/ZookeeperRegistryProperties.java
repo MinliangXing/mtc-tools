@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties(prefix = "elastic-job.zk")
+@ConfigurationProperties(prefix = "elastic-job.zookeeper")
 public class ZookeeperRegistryProperties {
 
     /**
@@ -13,7 +13,7 @@ public class ZookeeperRegistryProperties {
      * 多个地址用逗号分隔
      * 如: host1:2181,host2:2181
      */
-    private String zkAddressList;
+    private String serverLists;
 
     /**
      * Zookeeper的命名空间
