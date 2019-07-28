@@ -19,14 +19,17 @@ import com.mtc.tools.schedule.dangdang.core.executor.handler.JobProperties;
 import com.mtc.tools.schedule.dangdang.core.reg.zookeeper.ZookeeperRegistryCenter;
 import com.mtc.tools.schedule.dangdang.spring.api.SpringJobScheduler;
 import com.mtc.tools.schedule.dangdang.starter.annotation.ElasticJobConfig;
+import com.mtc.tools.schedule.dangdang.starter.annotation.EnableElasticJob;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
@@ -37,9 +40,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-
-@ConditionalOnExpression("'${elasticJob.zk.zkAddressList}'.length() > 0")
-@Import({RegistryCenterConfiguration.class})
+@Configuration
+@ConditionalOnClass({SimpleJob.class, DataflowJob.class})
+@ConditionalOnBean(annotation = EnableElasticJob.class)
+@AutoConfigureAfter(RegistryCenterConfiguration.class)
 public class ElasticJobAutoConfiguration {
 
     @Resource

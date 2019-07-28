@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.mtc.tools.schedule.dangdang.starter.autoconfigure.ElasticJobAutoConfiguration,\
+com.mtc.tools.schedule.dangdang.starter.autoconfigure.RegistryCenterConfiguration
